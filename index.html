@@ -1,0 +1,522 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <title>Kalkulator || Raja Gadai</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="container">
+    <section class="card header-card">
+      <div class="header-brand">
+        <div class="brand-mark">
+          <img src="logo.png" alt="Raja Gadai">
+        </div>
+        <div class="brand-copy">
+          <h1><span class="highlight">RAJA GADAI</span></h1>
+          <p>Hitung pinjaman, perpanjangan &amp; jatuh tempo dengan mudah</p>
+        </div>
+      </div>
+
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Ganti tema" title="Ganti tema">
+        <span id="themeIcon" aria-hidden="true"></span>
+      </button>
+    </section>
+
+    <section class="card calculator-card">
+      <div class="tabs">
+        <div class="tab-navigation">
+          <button class="tab-btn active" data-tab="hitungan">Hitungan</button>
+          <button class="tab-btn" data-tab="perjanjian">Perjanjian</button>
+          <button class="tab-btn" data-tab="promo">Promo</button>
+        </div>
+      </div>
+
+      <div class="tab-content" id="hitungan">
+        <form id="gadai-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pinjaman">Nilai Pinjaman</label>
+              <div class="input-wrap">
+                <span>Rp</span>
+                <input type="text" id="pinjaman" class="input-text" placeholder="Contoh: 1.000.000" inputmode="numeric"
+                  autocomplete="off" required />
+              </div>
+              <small>Masukkan nominal pinjaman yang akan dihitung.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="tanggal">Tanggal Transaksi</label>
+              <input type="date" id="tanggal" required disabled />
+              <small>Tanggal otomatis mengikuti tanggal hari ini.</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Kategori Barang</label>
+            <div class="category-grid">
+              <label class="category-option">
+                <input type="radio" name="kategori" value="hp" checked />
+                <span class="label-text">HP, LAPTOP, IPHONE, LM</span>
+                <span class="desc">Admin berdasarkan tabel kelipatan pinjaman (min Rp10.000)</span>
+              </label>
+              <label class="category-option">
+                <input type="radio" name="kategori" value="laptop" />
+                <span class="label-text">LAPTOP GAMING, IPAD, MACBOOK, TABLET</span>
+                <span class="desc">Admin 2% dari jumlah pinjaman</span>
+              </label>
+              <label class="category-option">
+                <input type="radio" name="kategori" value="proyektor" />
+                <span class="label-text">KAMERA, PROYEKTOR, VIDEO GAME, SMART WATCH</span>
+                <span class="desc">Admin 3% dari jumlah pinjaman</span>
+              </label>
+              <label class="category-option">
+                <input type="radio" name="kategori" value="tv-kecil" />
+                <span class="label-text">LED TV &lt; 550rb</span>
+                <span class="desc">Admin tetap Rp25.000</span>
+              </label>
+              <label class="category-option">
+                <input type="radio" name="kategori" value="tv-besar" />
+                <span class="label-text">LED TV &gt; 550rb</span>
+                <span class="desc">Admin 5% dari jumlah pinjaman (dibulatkan ke ribu terdekat)</span>
+              </label>
+              <label class="category-option">
+                <input type="radio" name="kategori" value="kendaraan" />
+                <span class="label-text">KENDARAAN MOTOR & MOBIL</span>
+                <span class="desc">Admin 5% dari jumlah pinjaman</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">HITUNG PERHITUNGAN</button>
+        </form>
+      </div>
+
+      <div class="tab-content" id="perjanjian" style="display: none">
+        <br>
+        <div class="perjanjian-document">
+
+        <h2>PERJANJIAN GADAI</h2>
+
+        <p>
+          Kami yang bertandatangan pada Surat Bukti Gadai (SBG) ini,
+          <b>PT Lautan Wirani Gadai</b> (Penerima Gadai) dan Nasabah
+          (Pemilik barang jaminan atau kuasa dari pemilik barang jaminan),
+          sepakat membuat perjanjian sebagai berikut:
+        </p>
+
+        <ol>
+
+          <li>
+            <strong>Nasabah menerima dan setuju</strong> terhadap uraian dan
+            taksiran barang jaminan, penetapan uang pinjaman (termasuk jika
+            Nasabah meminta nilai yang lebih rendah dari batas minimal rasio
+            yang diatur OJK), tarif sewa modal, biaya administrasi penyelesaian,
+            serta biaya lainnya yang timbul, sebagaimana yang dimaksud dalam
+            Surat Bukti Gadai (SBG) atau bukti transaksi (struk atau dokumen
+            elektronik) yang berlaku sebagai tanda bukti yang sah penerimaan
+            uang pinjaman dan uang kelebihan.
+          </li>
+
+          <li class="point-highlight">
+            <b>Nasabah menjamin bahwa barang yang diserahkan sebagai barang
+              jaminan merupakan milik Nasabah dan/atau milik Pemberi Kuasa,
+              sebagaimana dimuat dalam Pasal 1977 KUHPerdata, dan menjamin bahwa
+              bukan berasal dari tindak kejahatan, tidak dalam objek sengketa,
+              dan/atau sita jaminan. Maka dari itu membebaskan PT Lautan Wirani
+              Gadai dari segala tuntutan hukum apa pun, dari pihak mana pun,
+              terkait dengan kepemilikan barang jaminan.</b>
+          </li>
+
+          <li>
+            Nasabah menyatakan telah berutang kepada <b>PT Lautan Wirani Gadai</b> dan
+            dalam jangka waktu 30 hari sejak tanggal transaksi (sesuai pada
+            halaman depan SBG) berkewajiban untuk membayar uang pinjaman
+            ditambah sewa modal beserta biaya administrasi penyelesaian dan
+            denda (apabila ada) saat pelunasan, atau membayar sewa modal beserta
+            biaya administrasi dan denda (apabila ada) pada saat perpanjangan.
+          </li>
+
+          <li class="point-highlight">
+            <b><b>PT Lautan Wirani Gadai</b> akan memberikan ganti kerugian apabila barang
+              jaminan yang berada dalam penguasaan <b>PT Lautan Wirani Gadai</b> mengalami
+              kerusakan akibat bencana alam (force majeure), pencurian,
+              perampokan, kerusuhan, dan/atau kejadian lain di luar kekuasaan
+              <b>PT Lautan Wirani Gadai</b>. Nasabah bersedia menerima penggantian berupa
+              barang sejenis atau dalam kondisi bekas terpakai atau dapat memilih
+              penggantian berupa uang tunai sebesar nilai taksiran yang disepakati,
+              setelah Nasabah membayar semua kewajiban sesuai perjanjian ini
+              kepada <b>PT Lautan Wirani Gadai</b>.</b>
+          </li>
+
+          <li class="point-highlight">
+            <b>Barang jaminan akan disegel dan tidak digunakan selama berada dalam
+              penguasaan <b>PT Lautan Wirani Gadai</b>. Nasabah wajib mencadangkan
+              (backup) seluruh data sebelum menyerahkan barang jaminan, sehingga
+              risiko atas data, sistem, atau aplikasi pada barang jaminan menjadi
+              tanggung jawab Nasabah, sepanjang tidak terbukti timbul akibat
+              kelalaian <b>PT Lautan Wirani Gadai</b>.</b>
+          </li>
+
+          <li>
+            Jika terjadi penurunan taksiran barang jaminan pada saat
+            perpanjangan, maka Nasabah bersedia mengangsur uang pinjaman atau
+            menambah barang jaminan agar sesuai dengan nilai taksiran yang baru.
+          </li>
+
+          <li>
+            Jika ada kelebihan atas hasil penjualan atau lelang barang jaminan
+            setelah dikurangi uang pinjaman, sewa modal dan denda yang
+            terhutang, biaya administrasi penyelesaian, biaya penyelamatan
+            barang, biaya pemberitahuan uang kelebihan, dan biaya-biaya lainnya,
+            maka akan menjadi hak Nasabah. <b>PT Lautan Wirani Gadai</b> akan
+            memberitahukan nominal kelebihan melalui papan pengumuman pada
+            Kantor Cabang tempat Nasabah melakukan gadai, atau melalui media
+            lainnya seperti WhatsApp, email, atau SMS ke nomor Nasabah.
+          </li>
+
+          <li>
+            Kelebihan atas hasil penjualan atau lelang dapat diambil dalam
+            jangka waktu paling lambat 1 (satu) tahun sejak disampaikannya
+            pemberitahuan pertama kali kepada Nasabah, dan dapat diambil oleh
+            Nasabah dengan membawa SBG asli. Jika sudah lebih dari jangka waktu
+            tersebut, maka Nasabah menyatakan setuju bahwa kelebihan tersebut
+            akan digunakan untuk kepentingan sosial dan/atau lingkungan yang
+            pelaksanaannya akan diatur oleh <b>PT Lautan Wirani Gadai</b> .
+          </li>
+
+          <li>
+            Nasabah wajib menyimpan dan menjaga SBG asli dengan baik. Jika
+            terjadi kerusakan yang menyebabkan SBG tidak dapat terbaca atau
+            jika SBG hilang, maka Nasabah wajib segera melapor ke kantor cabang
+            tempat diterbitkannya SBG terkait.
+          </li>
+
+          <li class="point-highlight">
+            <b>Nasabah dapat datang sendiri untuk melakukan perpanjangan gadai
+              atau mengangsur uang pinjaman atau pelunasan atau menerima barang
+              jaminan, dan/atau dapat dengan memberikan kuasa kepada orang lain.
+              Khusus untuk pelunasan atau menerima barang jaminan harus dengan
+              mengisi dan menandatangani bagian "Pemberian Kuasa Pelunasan/
+              Menerima Barang Jaminan", membawa SBG asli, serta melampirkan
+              fotokopi KTP/SIM/Paspor Nasabah dan penerima kuasa, serta
+              menunjukkan KTP/SIM/Paspor asli penerima kuasa.</b>
+          </li>
+
+          <li>
+            Apabila Nasabah lalai dalam perjanjian atau wanprestasi, yaitu
+            hingga tanggal jatuh tempo Nasabah masih belum memenuhi
+            kewajibannya dan tidak melakukan perpanjangan gadai, maka Nasabah
+            sepakat untuk memberikan kuasa kepada <b>PT Lautan Wirani Gadai</b> untuk
+            menjual atau melelang barang jaminan dan/atau memberikan kuasa
+            kepada <b>PT Lautan Wirani Gadai</b> untuk menunjuk pihak ketiga yang akan
+            menggantikan Nasabah dalam melakukan pelunasan atau untuk menunjuk
+            pihak ketiga yang akan mengambil alih dan memenuhi kewajiban
+            Nasabah kepada <b>PT Lautan Wirani Gadai</b>, yang akan dilakukan dalam
+            jangka waktu paling lambat 20 hari sejak tanggal jatuh tempo.
+            Dengan menyetujui dan menandatangani "Pemberian Kuasa Guna
+            Pemenuhan Kewajiban", maka <b>PT Lautan Wirani Gadai</b>, Nasabah, dan
+            pihak ketiga sepakat bahwa segala risiko yang timbul dari barang
+            jaminan menjadi tanggung jawab Nasabah dan pihak terkait, dan akan
+            ditangani sesuai ketentuan perjanjian.
+          </li>
+
+          <li>
+            Apabila Nasabah meninggal dunia dan masih terdapat hak dan
+            kewajiban antara Nasabah dengan <b>PT Lautan Wirani Gadai</b>, maka
+            kewajiban Nasabah akan disesuaikan mengikuti ketentuan dari
+            <b>PT Lautan Wirani Gadai</b>, dan setelah kewajiban Nasabah tuntas,
+            maka ahli waris dapat mengambil barang jaminan dengan melampirkan
+            fotokopi KTP/SIM/Paspor milik Nasabah dan Surat Keterangan
+            Kematian.
+          </li>
+
+          <li>
+            Nasabah menyatakan setuju untuk mengikuti seluruh peraturan terkait
+            dengan gadai yang berlaku di <b>PT Lautan Wirani Gadai</b>. <b>PT Lautan Wirani Gadai</b>
+            berhak untuk menambah dan/atau mengubah segala peraturan
+            terkait dengan gadai, dan wajib memberitahukannya kepada Nasabah.
+          </li>
+
+          <li>
+            Setiap perselisihan, perbedaan pendapat atau sengketa yang timbul
+            dari atau terkait dengan perjanjian ini diselesaikan terlebih dahulu
+            secara musyawarah untuk mufakat. Apabila tidak tercapai kesepakatan,
+            para pihak sepakat menyelesaikannya melalui Lembaga Alternatif
+            Penyelesaian Sengketa Sektor Jasa Keuangan (LAPS SJK) sesuai
+            ketentuan Otoritas Jasa Keuangan dan Peraturan Perundang-Undangan
+            yang berlaku, serta tunduk pada seluruh ketentuan dan putusan
+            LAPS SJK yang bersifat mengikat.
+          </li>
+
+          <li>
+            Nasabah berhak menyampaikan pengaduan terkait layanan dan transaksi
+            gadai melalui Customer Care <strong> 085-188-188-688 </strong>,
+            surat elektronik ke <strong>customercare@rajagadai.id</strong>,
+            atau secara langsung ke Kantor Cabang <b>PT Lautan Wirani Gadai</b>.
+            Pengaduan terkait transaksi gadai wajib disertai nomor SBG dan
+            identitas diri yang sah, serta akan ditangani sesuai ketentuan
+            perlindungan konsumen yang berlaku.
+          </li>
+
+          <li>
+            Nasabah dengan ini menyetujui untuk mengesampingkan berlakunya
+            Pasal 1266 dan Pasal 1267 Kitab Undang-Undang Hukum Perdata
+            sepanjang mengenai perlunya penetapan atau putusan pengadilan
+            untuk mengakhiri perjanjian ini. Dengan demikian, apabila terjadi
+            wanprestasi atau peristiwa kelalaian sebagaimana diatur dalam
+            perjanjian ini, <b>PT Lautan Wirani Gadai</b> berhak mengakhiri perjanjian
+            serta melaksanakan eksekusi atas barang jaminan sesuai ketentuan
+            perjanjian dan Peraturan Perundang-Undangan yang berlaku tanpa
+            memerlukan penetapan terlebih dahulu dari Lembaga Peradilan, dan
+            Nasabah menyatakan memahami serta menyetujui bahwa tindakan
+            tersebut sah dan mengikat secara hukum.
+          </li>
+
+        </ol>
+
+        <div class="perjanjian-closing">
+          <strong>
+            Demikianlah perjanjian ini dibuat dengan sadar, tanpa paksaan,
+            dan berlaku mengikat sejak Surat Bukti Gadai ditandatangani
+            oleh PARA PIHAK.
+          </strong>
+        </div>
+</div>
+      </div>
+
+      <div class="tab-content" id="promo" style="display: none">
+        <div class="promo-page"><br>
+
+        <div class="promo-header"> <br>
+
+          <div>
+            <h3>Promo & Benefit</h3>
+
+            <p>
+              Informasi promo dan benefit yang dapat dijelaskan
+              kepada nasabah.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="promo-grid">
+
+
+          <!-- PROMO 1 -->
+
+          <div class="promo-card promo-late">
+
+            <div class="promo-card-top">
+
+              <span class="promo-badge">
+                1–15 HARI
+              </span>
+
+            </div>
+
+            <h4>
+              Promo Keterlambatan
+            </h4>
+
+            <div class="promo-highlight">
+              Flat <strong>5%</strong>
+            </div>
+
+            <p>
+              Promo keterlambatan untuk nasabah yang
+              melakukan transaksi dalam periode keterlambatan
+              1–15 hari dengan ketentuan flat 5%.
+            </p>
+
+          </div>
+
+
+          <!-- PROMO 2 -->
+
+          <div class="promo-card promo-free">
+
+            <div class="promo-card-top">
+
+              <span class="promo-badge">
+                +1 HARI
+              </span>
+
+            </div>
+
+            <h4>
+              Promo Tebus +1 Hari
+            </h4>
+
+            <div class="promo-highlight">
+              Denda <strong>0%</strong>
+            </div>
+
+            <p>
+              Promo tebus untuk nasabah yang melakukan
+              pelunasan 1 hari setelah tanggal jatuh tempo
+              dengan denda 0%.
+            </p>
+
+          </div>
+
+
+          <!-- PROMO 3 -->
+
+          <div class="promo-card promo-fast">
+
+            <div class="promo-card-top">
+
+              <span class="promo-badge">
+                0–3 HARI
+              </span>
+
+            </div>
+
+            <h4>
+              Promo Tebus Cepat
+            </h4>
+
+            <div class="promo-highlight">
+              Diskon <strong>50%</strong>
+            </div>
+
+            <p>
+              Promo tebus cepat untuk nasabah yang melakukan
+              pelunasan 0–3 hari dari tanggal transaksi dengan
+              diskon sebesar 50%.
+            </p>
+
+          </div>
+
+
+          <!-- PROMO 4 -->
+
+          <div class="promo-card promo-member">
+
+            <div class="promo-card-top">
+
+              <span class="promo-emoji">⭐⭐⭐⭐⭐</span>
+
+              <span class="promo-badge">
+                LANGGANAN
+              </span>
+
+            </div>
+
+            <h4>
+              Promo Benefit Langganan
+            </h4>
+
+            <div class="promo-highlight">
+              Up to <strong>Rp1.000.000</strong>
+            </div>
+
+            <p>
+              Nasabah dapat memperoleh benefit langganan
+              hingga Rp1.000.000 sesuai dengan ketentuan
+              program yang berlaku.
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="promo-note">
+
+          <div>
+
+            <strong>
+              Informasi Promo
+            </strong>
+
+            <p>
+              Promo berlaku sesuai dengan ketentuan dan
+              periode yang ditetapkan. Silakan jelaskan
+              ketentuan promo kepada nasabah sebelum
+              melakukan transaksi.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="info-box">
+          <h4>Informasi Tambahan</h4>
+          <h5>“Kita Buka Setiap Hari, Tanggal Libur dan Tanggal Merah Tetap Buka. dari Jam 08.00 - 21.00”</h5>
+        </div>
+</div>
+      </div>
+    </section>
+
+    <section class="card result-section" id="hasil" style="display: none">
+      <div class="result-heading">
+        <div>
+          <span class="eyebrow">HASIL PERHITUNGAN</span>
+          <h2>Informasi Pinjaman Anda</h2>
+          <p>Berikut pilihan pembayaran yang dapat dijelaskan kepada nasabah.</p>
+        </div>
+      </div>
+
+      <div class="loan-summary">
+        <div class="loan-main">
+          <span class="summary-label">PINJAMAN</span>
+          <strong id="nominal-pinjaman">Rp1.000.000</strong>
+          <span id="kategori-display">HP / iPhone</span>
+        </div>
+        <div class="date-summary">
+          <div><span class="summary-label">Tanggal Transaksi</span><strong id="tgl-transaksi">-</strong></div>
+          <div><span class="summary-label">Jatuh Tempo</span><strong id="tgl-jatuh-tempo">-</strong></div>
+        </div>
+      </div>
+
+      <div class="main-result">
+        <div class="main-result-label">Uang yang Diterima</div>
+        <strong class="main-result-amount" id="uang-terima">Rp0</strong>
+        <p>Nominal yang diterima setelah Tarif, Admin, dan Asuransi.</p>
+      </div>
+
+      <details class="cost-details">
+        <summary style="font-size: 20px; font-weight: 600; cursor: pointer; color: rgb(240, 65, 6);">🔎 Lihat Rincian
+          Biaya Awal</summary>
+        <div class="biaya-card compact">
+          <div class="biaya-row"><span>Tarif Sewa 0–30 Hari (10%)</span><span id="biaya-tarif">Rp100.000</span></div>
+          <div class="biaya-row"><span>Administrasi</span><span id="biaya-admin">Rp10.000</span></div>
+          <div class="biaya-row"><span>Asuransi</span><span id="biaya-asuransi">Rp10.000</span></div>
+          <div class="biaya-total"><span>Total Tarif di Awal</span><span id="total-potongan">Rp120.000</span></div>
+        </div>
+      </details>
+
+      <div class="skenario-title-wrap">
+        <!-- <span class="eyebrow">PILIHAN NASABAH</span> -->
+        <h3>Pilihan Pembayaran</h3>
+        <p>CS dapat wajib menjelaskan agar nasabah dapat memahami perhitungan.</p>
+      </div>
+      <div class="scenario-cards" id="scenario-cards"></div>
+      <div class="action-buttons">
+        <button type="button" class="btn-action btn-whatsapp" onclick="salinWhatsApp()">
+          Salin via WhatsApp
+        </button>
+      </div>
+    </section>
+    <!-- FOOTER -->
+
+    <div class="footer-note">
+      © 2026 RAJA GADAI. All Rights Reserved.
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
